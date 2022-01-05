@@ -163,19 +163,36 @@ const projectContainers = document.querySelectorAll('.project-container');
 projectContainers.forEach((projectContainer, idx) => {
   const projectNum = idx + 1;
   projectContainer.classList.remove('speech-bubble-animation');
-  projectContainer.classList.add('class-list-' + projectNum);
+  projectContainer.classList.add('project-' + projectNum);
+  projectContainer.childNodes[0].childNodes.forEach(child => {
+    if(child.tagName=='P'){
+        child.classList.remove('fade-in-animation');
+    }
+  });
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
           projectContainer.classList.add('speech-bubble-animation');
+          projectContainer.childNodes[0].childNodes.forEach((child, idx) => {
+            if(child.tagName=='P')
+              if(idx > 1)
+                child.classList.add('fade-in-animation-delay');
+              else
+                child.classList.add('fade-in-animation');
+          });
           projectContainer.classList.remove('out-of-view');
           return;
       }
       projectContainer.classList.remove('speech-bubble-animation');
+      projectContainer.childNodes[0].childNodes.forEach((child, idx) => {
+        if(child.tagName=='P'){
+            child.classList.remove('fade-in-animation');
+            child.classList.remove('fade-in-animation-delay');
+        }
+      });
       projectContainer.classList.add('out-of-view');
     })
   });
-  console.log('.grid-row-' + projectNum);
   observer.observe(document.querySelector('.grid-row-' + projectNum));
 });
 

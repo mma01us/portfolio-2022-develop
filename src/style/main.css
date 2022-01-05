@@ -51,7 +51,6 @@ canvas {
 .section {
   width: 100%;
   display: grid;
-  scroll-snap-align: center;
   user-select: none;
 }
 
@@ -99,7 +98,7 @@ h1 {
   z-index: 10;
 }
 .logo p {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 nav {
   position: fixed;
@@ -121,7 +120,7 @@ a:hover{
   transition-timing-function: ease-in;
 }
 .font-size-16 {
-  font-size: 16px;
+  font-size: 1rem;
 }
 .dim {
   color: #595959;
@@ -133,7 +132,7 @@ a:hover{
 }
 .landing-intro {
   max-width: 45%;
-  font-size: 25px;
+  font-size: 1.536rem;
 }
 .between-spacer {
   margin-left: 3%;
@@ -143,12 +142,16 @@ a:hover{
   visibility: hidden;
 }
 
+.scroll-snapper {
+  scroll-snap-align: center;
+}
+
 .project-grid {
   width: 100%;
   padding: 5%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(33vh, 50vh);
+  grid-auto-rows: minmax(66vh, 66vh);
 }
 
 .project-wrapper {
@@ -157,26 +160,62 @@ a:hover{
   grid-column: 1 / 13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(33vh, 50vh);
+  grid-auto-rows: minmax(66vh, 66vh);
 }
 
 .project-container {
   background-color: #ffffff;
+  border-radius: 50px;
   color: #222222;
   padding: 5%;
+  position:relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.triangle-right.right {
+  margin-right:40px;
+}
+.triangle-right.left {
+  margin-left:40px;
+}
+.triangle-right:after {
+  content:"";
+  position:absolute;
+  bottom:-20px; /* value = - border-top-width - border-bottom-width */
+  left:50px; /* controls horizontal position */
+  border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
+  border-style:solid;
+  border-color:#ffffff transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+.triangle-right.right:after {
+  top:55px;
+  right:-30px; /* value = - border-left-width - border-right-width */
+  bottom:auto;
+  left:auto;
+  border-width:30px 0 0 30px; /* vary these values to change the angle of the vertex */
+  border-color:transparent #ffffff ;
+}
+.triangle-right.left:after {
+  top:55px;
+  left:-30px; /* value = - border-left-width - border-right-width */
+  bottom:auto;
+  border-width:30px 30px 0 0; /* vary these values to change the angle of the vertex */
+  border-color:transparent #ffffff;
 }
 
 .grid-left-content {
   grid-column: 1 / 8;
-  transform-origin: right 10%;
+  transform-origin: 150% 20%;
 }
 
 .grid-right-content {
   grid-column: 6 / 13;
-  transform-origin: left 10%;
+  transform-origin: 0% 20%;
 }
 
 
@@ -208,6 +247,30 @@ a:hover{
   visibility: hidden;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-delayed {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes scale-in {
   0%{
 		transform: scale(0, 0);
@@ -221,5 +284,13 @@ a:hover{
   .speech-bubble-animation {
     animation: scale-in .66s 1;
     animation-timing-function: cubic-bezier(0, .8, 0, .8);
+  }
+  .fade-in-animation {
+    animation: fade-in 1s 1;
+    animation-timing-function: ease-out;
+  }
+  .fade-in-animation-delay {
+    animation: fade-in-delayed 1s 1;
+    animation-timing-function: ease-out;
   }
 }
