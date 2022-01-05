@@ -1,7 +1,6 @@
 import './style/main.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 /**
@@ -110,59 +109,6 @@ gsap.to(mesh.rotation, {
   },
 })
 
-// Stuff for project presenters
-//
-// const sceneObjects={
-// };
-//
-// // Pigeon
-// const pigeonScene = new THREE.Scene();
-// // add grid helper if you want to show grid in the scene
-// //pigeonScene.add(new THREE.GridHelper(8,12,0x888888, 0x444444));
-// pigeonScene.background = new THREE.Color(0x9999999); // set background color
-//
-// // CAMERA
-// /*/ type of camera with field of view, aspect ratio, nearand far view*/
-// const pigeonCamera = new THREE.PerspectiveCamera(
-//   30,
-//   sizes.width / sizes.height,
-//   1,
-//   5000
-// )
-// pigeonCamera.rotation.y = 45/180*Math.PI;
-// pigeonCamera.position.set(20*Math.sin(0.2 * Math.PI), 10, 20*Math.cos(0.2 * Math.PI)); // camera placement (x,y,z)
-// pigeonCamera.lookAt(0,5,0); // camera is looking at (0,0,0)
-// pigeonScene.add(pigeonCamera)
-//
-// // RENDERER
-// const pigeonRenderer = new THREE.WebGLRenderer({antialias:true}); /*/ antialias->true smooths the jagged edges*/
-// pigeonRenderer.setPixelRatio(window.devicePixelRatio)
-// pigeonRenderer.setSize(sizes.width/4 - sizes.width*.05, sizes.height/2)
-//
-// //light - makes the model look real
-// let pigeonLight = new THREE.AmbientLight(0x404040,100);
-// pigeonScene.add(pigeonLight);
-//
-// // dynamically generate container
-// const pigeonContainer = document.createElement('div');
-// document.getElementById('presenter-pigeon-container').appendChild(pigeonContainer);
-// pigeonContainer.appendChild(pigeonRenderer.domElement);
-// pigeonContainer.childNodes[0].className += "position-relative"; // remove fixed
-//
-// // load model
-// let pigeonLoader = new GLTFLoader();
-// pigeonLoader.load('/totoro.glb', function(gltf){
-//   let pigeon= gltf.scene.children[0];
-//   sceneObjects['pigeon'] = pigeon;
-//   pigeon.geometry.center;
-//   gltf.scene.scale.set(.5,.5,.5);
-//   pigeonScene.add(gltf.scene);// add it to your scene
-//   console.log( 'Successfully loaded pigeon model!' );
-//   tick()
-// }, function ( error ) {
-// 		console.log( 'Error loading pigeon model' );
-// });
-
 /**
  * Animate
  */
@@ -178,10 +124,6 @@ const tick = () => {
   controls.update()
   // Render
   renderer.render(scene, camera)
-
-  // Pigeon
-  //sceneObjects['pigeon'].rotation.y+=0.1;
-  //pigeonRenderer.render(pigeonScene, pigeonCamera)
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick)
@@ -212,12 +154,29 @@ window.addEventListener('resize', () => {
   // Update renderer
   renderer.setSize(sizes.width, sizes.height)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-
-  // Pigeon update
-  // pigeonCamera.aspect = sizes.width/sizes.height;
-  // pigeonCamera.updateProjectionMatrix();
-  // pigeonRenderer.setSize(sizes.width/2, sizes.height/2);
-  // pigeonRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
+
+// Scroll effects
+
+const projectContainers = document.querySelectorAll('.project-container');
+
+projectContainers.forEach((projectContainer, idx) => {
+  const projectNum = idx + 1;
+  projectContainer.classList.remove('speech-bubble-animation');
+  projectContainer.classList.add('class-list-' + projectNum);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          projectContainer.classList.add('speech-bubble-animation');
+          projectContainer.classList.remove('out-of-view');
+          return;
+      }
+      projectContainer.classList.remove('speech-bubble-animation');
+      projectContainer.classList.add('out-of-view');
+    })
+  });
+  console.log('.grid-row-' + projectNum);
+  observer.observe(document.querySelector('.grid-row-' + projectNum));
+});
 
 tick()

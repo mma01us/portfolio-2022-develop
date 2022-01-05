@@ -151,8 +151,18 @@ a:hover{
   grid-auto-rows: minmax(33vh, 50vh);
 }
 
+.project-wrapper {
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(33vh, 50vh);
+}
+
 .project-container {
-  background-color: #000000;
+  background-color: #ffffff;
+  color: #222222;
   padding: 5%;
   display: flex;
   flex-direction: column;
@@ -161,33 +171,55 @@ a:hover{
 
 .grid-left-content {
   grid-column: 1 / 8;
+  transform-origin: right 10%;
 }
 
 .grid-right-content {
-  grid-column: 5 / 12;
+  grid-column: 6 / 13;
+  transform-origin: left 10%;
 }
 
 
 .grid-right-model {
-  grid-column: 9 / 12;
+  grid-column: 9 / 13;
 }
 
 .grid-left-model {
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
 }
 
-.grid-row-one {
+.grid-row-1 {
   grid-row: 1;
 }
 
-.grid-row-two {
+.grid-row-2 {
   grid-row: 3;
 }
 
-.grid-row-three {
+.grid-row-3 {
   grid-row: 5;
 }
 
 .position-relative {
   position: relative;
+}
+
+.out-of-view {
+  visibility: hidden;
+}
+
+@keyframes scale-in {
+  0%{
+		transform: scale(0, 0);
+	}
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .speech-bubble-animation {
+    animation: scale-in .66s 1;
+    animation-timing-function: cubic-bezier(0, .8, 0, .8);
+  }
 }
