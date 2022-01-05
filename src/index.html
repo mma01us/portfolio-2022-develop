@@ -10,20 +10,52 @@
   </head>
   <body>
     <canvas class="webgl"></canvas>
-    <div class="bg"></div>
     <div class="logo">
-      <p>Michael Ma<br><span class="description-typer">Designer / Developer</span></p>
+      <p>Michael Ma<br><span class="description-typer">Motion Designer</span></p>
     </div>
-    <section class="section scroll-section section-landing">
-      <h1>Landing</h1>
+    <nav class="nav">
+      <a href="#work">Work</a>
+      <p>&nbsp;&nbsp;/&nbsp;&nbsp;</p>
+      <a href="#about">About</a>
+    </nav>
+    <section class="section flex-space-between scroll-section height-100vh section-landing">
+      <div class="flexbox-spacer">
+        <p>
+          Scroll Down!
+        </p>
+      </div>
+      <div class="landing-intro">
+        <div class="horizontal">
+          <p>
+            You found me! I’m Michael, and I &#x1F9E1; motion design and full stack development.
+            Currently located in <del class="dim">New York City</del> Washington DC.
+          </p>
+          <img style="max-width: 5%" src="../static/Logo.png"/>
+        </div>
+        <br>
+        <div class="horizontal font-size-16">
+          <a href="#work"><span style="font-style: normal;">&#x1F9D0;</span> Check out my work</a>
+          <p class="between-spacer">or</p>
+          <a href="#about"><span style="font-style: normal;">&#x1F4D6;</span> Read more about me</a>
+        </div>
+      </div>
+      <div id="scroll-motion-design">
+        <p>
+          Scroll Down!
+        </p>
+      </div>
     </section>
-    <section class="section scroll-section section-projects">
-      <h1>Projects</h1>
+    <section class="section scroll-section height-200vh">
+      <div id="work" class="flex-center height-100vh">
+        <h1>Projects</h1>
+      </div>
     </section>
-    <section class="section scroll-section section-projects">
-      <h1>About Me</h1>
+    <section class="section scroll-section height-200vh">
+      <div id="about" class="flex-center height-100vh">
+        <h1>About Me</h1>
+      </div>
     </section>
-    <section class="section scroll-section section-projects">
+    <section class="section scroll-section height-100vh">
       <h1>Footer</h1>
     </section>
   </body>

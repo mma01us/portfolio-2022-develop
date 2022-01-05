@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Readex+Pro&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -28,6 +28,8 @@
 html {
   -ms-scroll-snap-type: y mandatory;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  color: #ffffff;
 }
 
 body {
@@ -55,11 +57,32 @@ canvas {
   user-select: none;
 }
 
+.flex-space-between {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
 .section-landing {
+  background-color: #E85C47;
+}
+
+.height-100vh {
   height: 100vh;
 }
 
-.section-projects {
+.height-200vh {
   height: 200vh;
 }
 
@@ -71,23 +94,48 @@ h1 {
   line-height: 100%;
   text-align: center;
 }
-h2 {
-  font-weight: 500;
-  font-size: 6vw;
-  text-transform: uppercase;
-  -webkit-text-stroke: 1px white;
-  color: transparent;
-}
 .logo {
   position: fixed;
   top: 50px;
   left: 5%;
   z-index: 10;
-  color: white;
 }
 .logo p {
-  font-size: 15px;
+  font-size: 12px;
 }
-.bg{
-  z-index:1;
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 50px 5%;
+  right: 0;
+}
+a {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  text-decoration: none;
+  color: #ffffff;
+}
+.font-size-16 {
+  font-size: 16px;
+}
+.dim {
+  color: #595959;
+}
+.horizontal {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.landing-intro {
+  max-width: 45%;
+  font-size: 25px;
+}
+.between-spacer {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.flexbox-spacer {
+  visibility: hidden;
 }
