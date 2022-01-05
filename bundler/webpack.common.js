@@ -63,6 +63,21 @@ module.exports = {
                 ]
             },
 
+            // 3D
+            {
+                test: /\.(glb|gltf)$/,
+                use:
+                [
+                    {
+                        loader: 'file-loader',
+                        options:
+                        {
+                            outputPath: 'assets/models/'
+                        }
+                    }
+                ]
+            },
+
             // Shaders
             {
                 test: /\.(glsl|vs|fs|vert|frag)$/,
