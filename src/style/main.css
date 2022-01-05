@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -32,7 +32,7 @@ html {
 
 body {
   overflow-x: hidden;
-  font-family: 'Krona One', sans-serif;
+  font-family: 'Readex Pro', sans-serif;
   background-color: rgb(0, 0, 0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,6 +55,14 @@ canvas {
   user-select: none;
 }
 
+.section-landing {
+  height: 100vh;
+}
+
+.section-projects {
+  height: 200vh;
+}
+
 h1 {
   font-weight: 500;
   font-size: 5vw;
@@ -72,8 +80,14 @@ h2 {
 }
 .logo {
   position: fixed;
-  width: 5vw;
-  bottom: 0;
-  right: 0;
-  margin: 1em;
+  top: 50px;
+  left: 5%;
+  z-index: 10;
+  color: white;
+}
+.logo p {
+  font-size: 15px;
+}
+.bg{
+  z-index:1;
 }

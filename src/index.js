@@ -86,6 +86,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+renderer.setClearColor(0xE85C47);
 
 /**
  * Animation GSAP
@@ -96,7 +97,7 @@ ScrollTrigger.defaults({
   scrub: 3,
   ease: 'none',
 })
-const sections = document.querySelectorAll('.section')
+const sections = document.querySelectorAll('.scroll-section')
 gsap.from(mesh.position, {
   y: 1,
   duration: 1,
@@ -162,3 +163,12 @@ function onMouseMove(e) {
 window.addEventListener('mousemove', onMouseMove)
 
 tick()
+
+const [red, green, blue] = [69, 111, 225]
+const section1 = document.querySelector('.bg')
+
+window.addEventListener('scroll', () => {
+  const y = 1 + (window.scrollY || window.pageYOffset) / 150
+  const [r, g, b] = [red/y, green/y, blue/y].map(Math.round)
+  section1.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+})
