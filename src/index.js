@@ -4,10 +4,10 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 /**
- * GUI Controls
+ * GUI Controls - Debugging
  */
-import * as dat from 'dat.gui'
-const gui = new dat.GUI()
+// import * as dat from 'dat.gui'
+// const gui = new dat.GUI()
 
 /**
  * Base
