@@ -196,4 +196,44 @@ projectContainers.forEach((projectContainer, idx) => {
   observer.observe(document.querySelector('.grid-row-' + projectNum));
 });
 
+// Copy email to clipboard
+function copyMailFunction() {
+  if (navigator.clipboard && window.isSecureContext) {
+      // navigator clipboard api method'
+      navigator.clipboard.writeText("michael.ma@nyu.edu").then(function() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied to clipboard!";
+      }, function() {
+        tooltip.innerHTML = "Unable to copy to clipboard :(";
+        console.log("Error copying to clipboard");
+      });
+  } else {
+      // text area method
+      let textArea = document.createElement("textarea");
+      textArea.value = "michael.ma@nyu.edu";
+      // make the textarea out of viewport
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      return new Promise((res, rej) => {
+          // here the magic happens
+          document.execCommand('copy') ? res() : rej();
+          textArea.remove();
+          var tooltip = document.getElementById("myTooltip");
+          tooltip.innerHTML = "Copied to clipboard!";
+      });
+  }
+}
+
+function copyOutFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard?";
+}
+
+window.copyMailFunction = copyMailFunction;
+window.copyOutFunc = copyOutFunc;
+
 tick()

@@ -36,5 +36,6 @@ The project will be launched at http://localhost:8080/
 * [Three.js Scrolltrigger](https://github.com/mohnishlandge/threejs-template-gsap-scrolltrigger)
 * [Pure CSS Speech Bubbles](https://nicolasgallagher.com/pure-css-speech-bubbles/demo/)
 * [CSS Box Shadow Examples](https://getcssscan.com/css-box-shadow-examples)
+* [Social Icons](https://simpleicons.org/)
 
 Enjoy!
