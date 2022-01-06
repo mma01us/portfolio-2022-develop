@@ -6213,7 +6213,7 @@ __metadata:
     html-webpack-plugin: ^4.3.0
     raw-loader: ^4.0.1
     style-loader: ^1.2.1
-    three: ^0.116.1
+    three: ^0.136.0
     webpack: ^4.43.0
     webpack-cli: ^3.3.11
     webpack-dev-server: ^3.11.0
@@ -7532,10 +7532,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:^0.116.1":
-  version: 0.116.1
-  resolution: "three@npm:0.116.1"
-  checksum: cd94e55818fd6582a57e0e124ecd4c8f270d4411a0d83d624dad8d19cc823842a033ea0b3cce9f26064009f4f4cd1a2cb737f9ebdedab9acd7abf4cb894e74d1
+"three@npm:^0.136.0":
+  version: 0.136.0
+  resolution: "three@npm:0.136.0"
+  checksum: 9183f83a75901edb85034fe8f6d52bf6daaece554e40d42f8eef5dead13a09e5f67548ee7cccd6c34bde42a91c5e8fa2ccb4a1b80783d7986bda4ec9f58bfe7f
   languageName: node
   linkType: hard
 
