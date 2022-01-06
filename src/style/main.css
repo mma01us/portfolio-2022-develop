@@ -366,6 +366,17 @@ a:hover{
   }
 }
 
+@keyframes animate-in-char {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .speech-bubble-animation {
     animation: scale-in .66s 1;
@@ -378,6 +389,11 @@ a:hover{
   .fade-in-animation-delay {
     animation: fade-in-delayed 1s 1;
     animation-timing-function: ease-out;
+  }
+  .animate-in-char {
+    animation: animate-in-char 1s 1 backwards;
+    display: inline-block;
+    animation-delay: 1s;
   }
 }
 

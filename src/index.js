@@ -236,4 +236,39 @@ function copyOutFunc() {
 window.copyMailFunction = copyMailFunction;
 window.copyOutFunc = copyOutFunc;
 
+// Text animations
+
+var animateP = document.querySelector('.animate-in-text');
+var startingDelay = 500;
+var animDelay = 10; // delay in ms
+var charDom = '';
+var oldLocation = "New York City";
+var currentLocation = "Washington DC";
+animateP.innerHTML += ' ' + currentLocation + ".";
+var pText = animateP.innerHTML;
+
+
+for(let c = 0; c < pText.length; ++c){
+  let char = pText[c];
+    console.log(char);
+  if(char == " "){ // handle blankspace
+    charDom += char;
+  } else if(char == ":"){ // handle emoji
+    let end = pText.indexOf(":", c + 1);
+    charDom += '<span class="animate-in-char" style="animation-delay: ' +
+      (startingDelay + c * animDelay) + 'ms;">&#x1F9E1;</span>';
+    c += end - c;
+  } else if(char == "["){ // handle location
+    let end = pText.indexOf("]", c);
+    charDom += '<del class="dim animate-in-char" style="animation-delay: ' +
+      (startingDelay + c * animDelay) + 'ms;">' + oldLocation + '</del>';
+    c += end - c;
+  } else {
+    charDom += '<span class="animate-in-char" style="animation-delay: ' +
+      (startingDelay + c * animDelay) + 'ms;">' + char + '</span>';
+  }
+}
+
+animateP.innerHTML = charDom;
+
 tick()
